@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2");
+uint256 hashGenesisBlock("0xf89aa670850a65e8974198852a767fd3b078fd5d3580df641fbaab7608c2d1e4");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // timcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2768,13 +2768,13 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1391683316;
+        block.nTime    = 1391685795;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2084524493;
+        block.nNonce   = 385270584;
 
         if (fTestNet)
         {
-            block.nTime    = 1391683316;
+            block.nTime    = 1391685795;
             block.nNonce   = 385270584;
         }
 
@@ -2782,7 +2782,7 @@ bool InitBlockIndex() {
         uint256 hash = block.GetHash();
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
-        printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+        printf("%s\n + Merkle Root is me: ", block.hashMerkleRoot.ToString().c_str());
         assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
         block.print();
         assert(hash == hashGenesisBlock);
